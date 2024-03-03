@@ -1,6 +1,6 @@
-const app = require("./app");
+const app = require("./backend/app.js");
 const dotenv = require("dotenv");
-const db_conn = require('./config/database.js')
+const db_conn = require('./backend/config/database.js')
 const cloudinary = require("cloudinary");
 // const Razorpay = require("razorpay");
 //config

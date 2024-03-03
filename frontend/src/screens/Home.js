@@ -52,7 +52,7 @@ export default function Home() {
             <div className='container' style={{ "display": "flex", "flexWrap": "wrap" }}>
 
                 {
-                    shopData === []
+                    shopData == []
                         ? {} : shopData.map((data) => {
                             return (
                                 <ShopCard key={data._id} shopData={data} />
