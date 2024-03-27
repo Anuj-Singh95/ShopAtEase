@@ -87,7 +87,7 @@ export default function PlaceOrder() {
       //get user details
       try {
       
-      const response = await fetch("/api/v1/me",{
+      const response = await fetch("https://shopatease-2.onrender.com/api/v1/me",{
         method:'GET',
         headers:{
           'Content-Type': 'application/json'
@@ -173,7 +173,7 @@ export default function PlaceOrder() {
           products,
           payment
         }
-        const response = await fetch("/api/v1/place-order",{
+        const response = await fetch("https://shopatease-2.onrender.com/api/v1/place-order",{
           method:'POST',
           headers:{
             'Content-Type': 'application/json'

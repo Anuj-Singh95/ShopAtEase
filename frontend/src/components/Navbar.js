@@ -22,7 +22,7 @@ export default function Navbar(props) {
   const handleLogout = async (event) => {
     
     try {
-      let response = await fetch('/api/v1/logout', {
+      let response = await fetch('https://shopatease-2.onrender.com/api/v1/logout', {
         method: 'get',
         headers: {
           'Content-Type': 'application/json'

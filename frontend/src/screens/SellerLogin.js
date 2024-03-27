@@ -21,7 +21,7 @@ export default function SellerLogin() {
       email: emailState,
       password: passState
         }
-    const response = await fetch("http://localhost:5000/api/seller-login",{
+    const response = await fetch("https://shopatease-2.onrender.com/api/seller-login",{
       method:'POST',
       headers:{
         'Content-Type': 'application/json'

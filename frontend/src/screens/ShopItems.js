@@ -11,7 +11,7 @@ export default function ShopItems() {
   const [shopData, setShopData] = useState({});
   const loadData = async () => {
     try {
-      let response = await fetch(`/api/v1/shop/${shopId}`, {
+      let response = await fetch(`https://shopatease-2.onrender.com/api/v1/shop/${shopId}`, {
         method: 'get',
         headers: {
           'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export default function ShopItems() {
     
     {/* {console.log("id===="+data.id)} */}
       {
-        shopItems !== []
+        shopItems != []
           ? shopItems.map((data) => {
             return (
               <div className="shopItem-card">

@@ -23,7 +23,7 @@ export default function Login() {
       email: emailState,
       password: passState
         }
-    const response = await fetch("/api/v1/login",{
+    const response = await fetch("https://shopatease-2.onrender.com/api/v1/login",{
       method:'POST',
       headers:{
         'Content-Type': 'application/json'

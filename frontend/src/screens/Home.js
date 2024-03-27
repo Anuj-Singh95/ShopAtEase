@@ -14,7 +14,7 @@ export default function Home() {
     const [shopData, setShopData] = useState([{}]);
     const loadData = async () => {
         try {
-            let response = await fetch('/api/v1/shops', {
+            let response = await fetch('https://shopatease-2.onrender.com/api/v1/shops', {
                 method: 'get',
                 headers: {
                     'Content-Type': 'application/json'

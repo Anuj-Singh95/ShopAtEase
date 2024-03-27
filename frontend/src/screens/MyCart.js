@@ -47,7 +47,7 @@ export default function MyCart() {
 
                             <tbody>
                                 {
-                                    itemsState !== []
+                                    itemsState != []
                                         ? itemsState.map((data, index) => {
                                             return (
                                                 <tr>

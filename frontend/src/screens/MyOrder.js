@@ -5,7 +5,7 @@ export default function MyOrder() {
     const [orderData, setOrderData] = useState([]);
     const loadData = async () => {
         try {
-            let response = await fetch('/api/v1/my-order', {
+            let response = await fetch('https://shopatease-2.onrender.com/api/v1/my-order', {
                 method: 'get',
                 headers: {
                     'Content-Type': 'application/json'
@@ -45,7 +45,7 @@ export default function MyOrder() {
                         </thead>
                         
                             {
-                                orderData !== []
+                                orderData != []
                                     ? orderData.map((order, i) => {
                                         return (
                                             <tbody>

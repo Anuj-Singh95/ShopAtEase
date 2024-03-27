@@ -61,7 +61,7 @@ export default function SellerSignup() {
 
     try {
       //register seller
-      let registerSeller = await fetch("/api/v1/register/seller", {
+      let registerSeller = await fetch("https://shopatease-2.onrender.com/api/v1/register/seller", {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
