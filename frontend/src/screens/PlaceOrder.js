@@ -4,6 +4,10 @@ import { Link, redirect, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatchCart } from "../components/ContextReducer";
 
+const api = axios.create({
+  baseURL: "https://shopatease-2.onrender.com", // Set the domain or base URL here
+});
+
 export default function PlaceOrder() {
   const dispatch = useDispatchCart();
 
@@ -111,7 +115,7 @@ export default function PlaceOrder() {
         };
         const {
           data: { order },
-        } = await axios.post("/api/v1/checkout", {
+        } = await api.post("/api/v1/checkout", {
           totalAmount,
           orderDetails,
         });
@@ -124,7 +128,8 @@ export default function PlaceOrder() {
           description: "Test Transaction",
           image: "https://example.com/your_logo",
           order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-          callback_url: "http://127.0.0.1:4000/api/v1/paymentVerification",
+          callback_url:
+            "https://shopatease-2.onrender.com/api/v1/paymentVerification",
           prefill: {
             name: "Gaurav Kumar",
             email: "gaurav.kumar@example.com",
