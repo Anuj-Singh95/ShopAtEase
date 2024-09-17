@@ -91,7 +91,9 @@ export default function SellerSignup() {
         formData.append("file", fileState);
         const response = await axios.post("/api/v1/register/shop", formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            Accept: "application/json",
+            // "Content-Type": "multipart/form-data",
+            authToken: localStorage.getItem("authToken"),
           },
         });
         if (!response.data.success) {
