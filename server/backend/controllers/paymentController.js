@@ -66,7 +66,9 @@ exports.paymentVerification = async (req, res, next) => {
     //     res.status(400).json({success: false, message: error.message});
     // }
 
-    res.redirect(`/paymentsuccess?reference=${razorpay_payment_id}`);
+    res.redirect(
+      `https://shopatease.onrender.com/paymentsuccess?reference=${razorpay_payment_id}`
+    );
   } else {
     res.status(400).json({
       success: false,
