@@ -51,7 +51,7 @@ export default function CreateProduct() {
         {
           headers: {
             Accept: "application/json",
-            "Content-Type": "multipart/form-data",
+            // "Content-Type": "multipart/form-data",
             authToken: localStorage.getItem("authToken"),
           },
         }
