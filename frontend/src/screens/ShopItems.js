@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { useShopId } from './../components/ContextReducer'
-import Card from '../components/Card';
-import ShopData from '../components/ShopData';
-import './ShopItems.css';
-import Footer from '../components/Footer';
+import React, { useState, useEffect } from "react";
+import { useShopId } from "./../components/ContextReducer";
+import Card from "../components/Card";
+import ShopData from "../components/ShopData";
+import "./ShopItems.css";
+import Footer from "../components/Footer";
 
 export default function ShopItems() {
   let shopId = useShopId();
@@ -11,12 +11,15 @@ export default function ShopItems() {
   const [shopData, setShopData] = useState({});
   const loadData = async () => {
     try {
-      let response = await fetch(`https://shopatease-2.onrender.com/api/v1/shop/${shopId}`, {
-        method: 'get',
-        headers: {
-          'Content-Type': 'application/json'
+      let response = await fetch(
+        `https://shopatease-2.onrender.com/api/v1/shop/${shopId}`,
+        {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       response = await response.json();
       // console.log(response.shopProducts);
       setShopItems(response.shopProducts);
@@ -29,13 +32,11 @@ export default function ShopItems() {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   useEffect(() => {
     loadData();
   }, []);
-
-
 
   return (
     <div>
@@ -43,21 +44,19 @@ export default function ShopItems() {
       {console.log(shopData.address?.state)} */}
       <ShopData shopData={shopData} />
 
-    <div className='shopItem' style={{"display":"flex", "flexWrap":"wrap"}}>
-    
-    {/* {console.log("id===="+data.id)} */}
-      {
-        shopItems != []
+      <div className="shopItem" style={{ display: "flex", flexWrap: "wrap" }}>
+        {/* {console.log("id===="+data.id)} */}
+        {shopItems != []
           ? shopItems.map((data) => {
-            return (
-              <div className="shopItem-card">
-              <Card key={data._id} shopItem={data} />
-              </div>
-            )
-          }) : ""
-      }
+              return (
+                <div className="shopItem-card">
+                  <Card key={data._id} shopItem={data} />
+                </div>
+              );
+            })
+          : ""}
       </div>
-      <Footer/>
+      <Footer />
     </div>
-  )
+  );
 }

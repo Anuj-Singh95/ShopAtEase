@@ -3,6 +3,10 @@ import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const api = axios.create({
+  baseURL: "https://shopatease-2.onrender.com", // Set the domain or base URL here
+});
+
 export default function CreateProduct() {
   const [productNameState, setProductNameState] = useState("");
   const [descriptionState, setDescriptionState] = useState("");
@@ -45,17 +49,13 @@ export default function CreateProduct() {
       formData.append("category", categoryState);
       formData.append("stock", stockState);
       formData.append("file", fileState);
-      const response = await axios.post(
-        "/api/v1/seller/product/new",
-        formData,
-        {
-          headers: {
-            Accept: "application/json",
-            // "Content-Type": "multipart/form-data",
-            authToken: localStorage.getItem("authToken"),
-          },
-        }
-      );
+      const response = await api.post("/api/v1/seller/product/new", formData, {
+        headers: {
+          Accept: "application/json",
+          // "Content-Type": "multipart/form-data",
+          authToken: localStorage.getItem("authToken"),
+        },
+      });
 
       // const inputData = {
       //     name: productNameState,

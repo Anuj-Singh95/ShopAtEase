@@ -3,6 +3,10 @@ import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const api = axios.create({
+  baseURL: "https://shopatease-2.onrender.com", // Set the domain or base URL here
+});
+
 export default function SellerSignup() {
   const [nameState, setNameState] = useState("");
   const [shopnameState, setShopnameState] = useState("");
@@ -89,7 +93,7 @@ export default function SellerSignup() {
         formData.append("phoneNumber", phoneNumberState);
         formData.append("address", JSON.stringify(address));
         formData.append("file", fileState);
-        const response = await axios.post("/api/v1/register/shop", formData, {
+        const response = await api.post("/api/v1/register/shop", formData, {
           headers: {
             Accept: "application/json",
             // "Content-Type": "multipart/form-data",
