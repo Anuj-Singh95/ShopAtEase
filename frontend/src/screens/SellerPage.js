@@ -7,17 +7,14 @@ export default function SellerPage() {
   const [isSeller, setIsSeller] = useState();
   const loadData = async () => {
     try {
-      let response = await fetch(
-        "https://shopatease-2.onrender.com/api/v1/me",
-        {
-          method: "get",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            authToken: localStorage.getItem("authToken"),
-          },
-        }
-      );
+      let response = await fetch(`${process.env.REACT_APP_URI}/api/v1/me`, {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          authToken: localStorage.getItem("authToken"),
+        },
+      });
       // let response = await axios.get('/api/v1/shops');
       response = await response.json();
       // console.log(response.shop);

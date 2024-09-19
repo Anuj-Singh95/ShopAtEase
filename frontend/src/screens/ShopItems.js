@@ -12,7 +12,7 @@ export default function ShopItems() {
   const loadData = async () => {
     try {
       let response = await fetch(
-        `https://shopatease-2.onrender.com/api/v1/shop/${shopId}`,
+        `${process.env.REACT_APP_URI}/api/v1/shop/${shopId}`,
         {
           method: "get",
           headers: {

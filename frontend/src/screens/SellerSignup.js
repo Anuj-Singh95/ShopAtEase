@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://shopatease-2.onrender.com", // Set the domain or base URL here
+  baseURL: `${process.env.REACT_APP_URI}`, // Set the domain or base URL here
 });
 
 export default function SellerSignup() {
@@ -64,7 +64,7 @@ export default function SellerSignup() {
     try {
       //register seller
       let registerSeller = await fetch(
-        "https://shopatease-2.onrender.com/api/v1/register/seller",
+        `${process.env.REACT_APP_URI}/api/v1/register/seller`,
         {
           method: "PUT",
           headers: {

@@ -5,7 +5,7 @@ import axios from "axios";
 import { useDispatchCart } from "../components/ContextReducer";
 
 const api = axios.create({
-  baseURL: "https://shopatease-2.onrender.com", // Set the domain or base URL here
+  baseURL: `${process.env.REACT_APP_URI}`, // Set the domain or base URL here
 });
 
 export default function PlaceOrder() {
@@ -86,17 +86,14 @@ export default function PlaceOrder() {
       let userId;
       //get user details
       try {
-        const response = await fetch(
-          "https://shopatease-2.onrender.com/api/v1/me",
-          {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              authToken: localStorage.getItem("authToken"),
-            },
-          }
-        );
+        const response = await fetch(`${process.env.REACT_APP_URI}/api/v1/me`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            authToken: localStorage.getItem("authToken"),
+          },
+        });
         const data = await response.json();
         console.log(data);
         userId = data.user._id;
@@ -128,8 +125,7 @@ export default function PlaceOrder() {
           description: "Test Transaction",
           image: "https://example.com/your_logo",
           order_id: order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-          callback_url:
-            "https://shopatease-2.onrender.com/api/v1/paymentVerification",
+          callback_url: `${process.env.REACT_APP_URI}/api/v1/paymentVerification`,
           prefill: {
             name: "Gaurav Kumar",
             email: "gaurav.kumar@example.com",
@@ -178,7 +174,7 @@ export default function PlaceOrder() {
           payment,
         };
         const response = await fetch(
-          "https://shopatease-2.onrender.com/api/v1/place-order",
+          `${process.env.REACT_APP_URI}/api/v1/place-order`,
           {
             method: "POST",
             headers: {

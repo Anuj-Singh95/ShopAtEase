@@ -1,28 +1,32 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 export default function Shops() {
   const [shopData, setShopData] = useState([]);
   const loadData = async () => {
     try {
-      let response = await fetch('/api/v1/admin/shops', {
-        method: 'get',
-        headers: {
-          'Content-Type': 'application/json'
+      let response = await fetch(
+        `${process.env.REACT_APP_URI}/api/v1/admin/shops`,
+        {
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       // let response = await axios.get('/api/v1/shops');
-      response = await response.json()
+      response = await response.json();
       // console.log(response.shop);
       setShopData(response.shop);
     } catch (error) {
       console.log(error.message);
     }
-  }
+  };
   useEffect(() => {
     loadData();
   }, []);
   return (
-    <div><h2> Shops</h2>
+    <div>
+      <h2> Shops</h2>
       <table className="table table-hover">
         <thead>
           <tr>
@@ -34,29 +38,24 @@ export default function Shops() {
           </tr>
         </thead>
 
-
         <tbody>
-          {
-            shopData !== []
-            && shopData.map((shop, i) => {
+          {shopData != [] &&
+            shopData.map((shop, i) => {
               return (
-
                 <tr>
-                  <th scope="row">{i+1}</th>
+                  <th scope="row">{i + 1}</th>
                   <td>{shop.shopName}</td>
                   <td>{shop.ownerName}</td>
                   <td>{shop.phoneNumber}</td>
-                  <td>{shop.address.area}, {shop.address.city}, {shop.address.state}, {shop.address.pinCode}</td>
+                  <td>
+                    {shop.address.area}, {shop.address.city},{" "}
+                    {shop.address.state}, {shop.address.pinCode}
+                  </td>
                 </tr>
-
-              )
-            })
-
-          }
+              );
+            })}
         </tbody>
       </table>
-
     </div>
-  )
-
+  );
 }
